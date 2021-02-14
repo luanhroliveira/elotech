@@ -20,6 +20,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "pessoa")
 public class Pessoa implements Serializable {
@@ -47,7 +49,6 @@ public class Pessoa implements Serializable {
 	@Column(length = 20, columnDefinition = "varchar(20) default 'ATIVO'")
 	private Status status;
 
-	
 	@OneToMany(mappedBy = "pessoa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<PessoaContato> contatos = new HashSet<>();
 
@@ -97,6 +98,10 @@ public class Pessoa implements Serializable {
 
 	public Status getStatus() {
 		return status;
+	}
+
+	public Set<PessoaContato> getContatos() {
+		return contatos;
 	}
 
 	@Override

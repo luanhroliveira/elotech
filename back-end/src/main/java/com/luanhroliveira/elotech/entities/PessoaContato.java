@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "pessoa_contato")
 public class PessoaContato implements Serializable {
@@ -25,6 +27,7 @@ public class PessoaContato implements Serializable {
 	private Long id;
 
 	@NotNull
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "pessoa_id", nullable = false)
 	private Pessoa pessoa;

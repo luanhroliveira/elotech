@@ -1,7 +1,10 @@
 package com.luanhroliveira.elotech.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.luanhroliveira.elotech.entities.Pessoa;
 import com.luanhroliveira.elotech.entities.Status;
@@ -15,6 +18,8 @@ public class PessoaDTO implements Serializable {
 	private String nome;
 	private Date dataNascimento;
 	private Status status;
+
+	private List<PessoaContatoDTO> contatos = new ArrayList<>();
 
 	public PessoaDTO() {
 
@@ -34,6 +39,8 @@ public class PessoaDTO implements Serializable {
 		nome = entity.getNome();
 		dataNascimento = entity.getDataNascimento();
 		status = entity.getStatus();
+
+		contatos = entity.getContatos().stream().map(x -> new PessoaContatoDTO(x)).collect(Collectors.toList());
 	}
 
 	public Long getId() {
@@ -74,6 +81,10 @@ public class PessoaDTO implements Serializable {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public List<PessoaContatoDTO> getContatos() {
+		return contatos;
 	}
 
 }

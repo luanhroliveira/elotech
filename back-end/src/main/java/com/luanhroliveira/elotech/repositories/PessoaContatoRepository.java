@@ -6,5 +6,4 @@ import com.luanhroliveira.elotech.entities.PessoaContato;
 
 public interface PessoaContatoRepository extends JpaRepository<PessoaContato, Long> {
 
-	
 }
