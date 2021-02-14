@@ -59,11 +59,17 @@ public class PessoaService {
 		return new PessoaDTO(pessoa);
 	}
 
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+
 	@Transactional
 	public PessoaDTO setStatus(Long id) {
 
 		Pessoa pessoa = repository.getOne(id);
-		pessoa.setStatus(Status.INATIVO);
+		String status = pessoa.getStatus().toString();
+
+		pessoa.setStatus((status == "ATIVO") ? Status.INATIVO : Status.ATIVO);
 		pessoa = repository.save(pessoa);
 
 		return new PessoaDTO(pessoa);
