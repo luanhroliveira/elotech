@@ -12,9 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.luanhroliveira.elotech.entities.enums.Status;
 
 @Entity
 @Table(name = "pessoa_contato")
@@ -26,7 +28,6 @@ public class PessoaContato implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "pessoa_id", nullable = false)
@@ -37,6 +38,7 @@ public class PessoaContato implements Serializable {
 	private String telefone;
 
 	@NotNull
+	@Email(message = "Email inválido!")
 	@Column(length = 120, nullable = false)
 	private String email;
 

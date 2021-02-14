@@ -20,7 +20,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.luanhroliveira.elotech.entities.enums.Status;
 
 @Entity
 @Table(name = "pessoa")
@@ -33,6 +36,7 @@ public class Pessoa implements Serializable {
 	private Long id;
 
 	@NotNull
+	@CPF(message = "CPF inválido!")
 	@Column(length = 11, unique = true, nullable = false)
 	private String cpf;
 
@@ -98,6 +102,10 @@ public class Pessoa implements Serializable {
 
 	public Status getStatus() {
 		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	public Set<PessoaContato> getContatos() {

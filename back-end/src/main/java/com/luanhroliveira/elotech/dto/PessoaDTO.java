@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.luanhroliveira.elotech.entities.Pessoa;
-import com.luanhroliveira.elotech.entities.Status;
+import com.luanhroliveira.elotech.entities.enums.Status;
 
 public class PessoaDTO implements Serializable {
 

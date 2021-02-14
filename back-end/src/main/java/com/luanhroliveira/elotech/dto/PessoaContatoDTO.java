@@ -2,7 +2,7 @@ package com.luanhroliveira.elotech.dto;
 
 import com.luanhroliveira.elotech.entities.Pessoa;
 import com.luanhroliveira.elotech.entities.PessoaContato;
-import com.luanhroliveira.elotech.entities.Status;
+import com.luanhroliveira.elotech.entities.enums.Status;
 
 public class PessoaContatoDTO {
 	private Long id;
