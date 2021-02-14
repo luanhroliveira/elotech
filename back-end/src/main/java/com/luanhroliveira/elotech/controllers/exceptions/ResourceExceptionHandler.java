@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.luanhroliveira.elotech.services.exceptions.AuthorizationException;
+import com.luanhroliveira.elotech.services.exceptions.ViolationException;
 import com.luanhroliveira.elotech.services.exceptions.DatabaseException;
 import com.luanhroliveira.elotech.services.exceptions.ResourceNotFoundException;
 
@@ -35,4 +37,23 @@ public class ResourceExceptionHandler {
 		return ResponseEntity.status(status).body(err);
 	}
 
+	@ExceptionHandler(ViolationException.class)
+	public ResponseEntity<StandardError> validation(ViolationException e, HttpServletRequest request) {
+		String error = "Validation error";
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(),
+				request.getRequestURI());
+
+		return ResponseEntity.status(status).body(err);
+	}
+
+	@ExceptionHandler(AuthorizationException.class)
+	public ResponseEntity<StandardError> validation(AuthorizationException e, HttpServletRequest request) {
+		String error = "Authorization error";
+		HttpStatus status = HttpStatus.UNAUTHORIZED;
+		StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(),
+				request.getRequestURI());
+
+		return ResponseEntity.status(status).body(err);
+	}
 }
