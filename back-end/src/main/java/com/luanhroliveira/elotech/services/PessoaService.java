@@ -4,7 +4,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.access.AuthorizationServiceException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +20,8 @@ import com.luanhroliveira.elotech.entities.PessoaContato;
 import com.luanhroliveira.elotech.entities.enums.Status;
 import com.luanhroliveira.elotech.repositories.PessoaContatoRepository;
 import com.luanhroliveira.elotech.repositories.PessoaRepository;
+import com.luanhroliveira.elotech.services.exceptions.DatabaseException;
+import com.luanhroliveira.elotech.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class PessoaService {
@@ -36,7 +42,7 @@ public class PessoaService {
 	public PessoaDTO findById(Long id) {
 		Optional<Pessoa> pessoa = repository.findById(id);
 
-		return pessoa.map(x -> new PessoaDTO(x)).get();
+		return pessoa.map(x -> new PessoaDTO(x)).orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 
 	@Transactional
@@ -60,7 +66,13 @@ public class PessoaService {
 	}
 
 	public void delete(Long id) {
-		repository.deleteById(id);
+		try {
+			repository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException(e.getMessage());
+		}
 	}
 
 	@Transactional
@@ -73,6 +85,25 @@ public class PessoaService {
 		pessoa = repository.save(pessoa);
 
 		return new PessoaDTO(pessoa);
+	}
+
+	public PessoaDTO update(Long id, PessoaDTO dto) {
+		try {
+			Pessoa pessoa = repository.getOne(id);
+			updateData(pessoa, dto);
+
+			repository.save(pessoa);
+			return new PessoaDTO(pessoa);
+
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
+	}
+
+	private void updateData(Pessoa pessoa, PessoaDTO dto) {
+		pessoa.setCpf(dto.getCpf());
+		pessoa.setDataNascimento(dto.getDataNascimento());
+		pessoa.setNome(dto.getNome());
 	}
 
 }

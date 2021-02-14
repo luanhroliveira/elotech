@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.luanhroliveira.elotech.entities.Pessoa;
 import com.luanhroliveira.elotech.entities.enums.Status;
 
@@ -16,6 +19,8 @@ public class PessoaDTO implements Serializable {
 	private Long id;
 	private String cpf;
 	private String nome;
+	
+	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	private Status status;
 
