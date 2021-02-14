@@ -22,7 +22,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.luanhroliveira.elotech.entities.enums.Status;
 
 @Entity

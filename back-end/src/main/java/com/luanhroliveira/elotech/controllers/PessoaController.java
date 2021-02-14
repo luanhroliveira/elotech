@@ -42,17 +42,17 @@ public class PessoaController {
 	@PostMapping
 	public ResponseEntity<PessoaDTO> insert(@RequestBody PessoaDTO dto) {
 		dto = service.insert(dto);
+
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 
 		return ResponseEntity.created(uri).body(dto);
+
 	}
 
 	@PutMapping("/{id}/status")
-	public ResponseEntity<PessoaDTO> setStatus(@PathVariable Long id){
+	public ResponseEntity<PessoaDTO> setStatus(@PathVariable Long id) {
 		PessoaDTO dto = service.setStatus(id);
-		
 		return ResponseEntity.ok().body(dto);
 	}
-	
-	
+
 }

@@ -39,29 +39,21 @@ public class PessoaService {
 		return pessoa.map(x -> new PessoaDTO(x)).get();
 	}
 
-	/*
-	 * @Transactional public Pessoa insert(Pessoa obj) { obj.setId(null); if
-	 * (obj.getContatos().size() == 0) { throw new
-	 * AuthorizationServiceException("Adicione no mínimo 1(um) contato para essa pessoa."
-	 * ); }
-	 * 
-	 * obj = repository.save(obj); contatoRepository.saveAll(obj.getContatos());
-	 * 
-	 * return obj; }
-	 */
-
 	@Transactional
 	public PessoaDTO insert(PessoaDTO dto) {
-
-		Pessoa pessoa = new Pessoa(null, dto.getNome(), dto.getCpf(), dto.getDataNascimento(), Status.ATIVO);
 
 		if (dto.getContatos().size() == 0) {
 			throw new AuthorizationServiceException("Adicione no mínimo 1(um) contato para essa pessoa.");
 		}
 
-		System.out.println("TESTE -> " + dto.getContatos().size());
-		pessoa = repository.save(pessoa);
+		Pessoa pessoa = new Pessoa(null, dto.getNome(), dto.getCpf(), dto.getDataNascimento(), Status.ATIVO);
 
+		for (PessoaContatoDTO p : dto.getContatos()) {
+			PessoaContato contato = new PessoaContato(null, pessoa, p.getTelefone(), p.getEmail(), Status.ATIVO);
+			pessoa.getContatos().add(contato);
+		}
+
+		pessoa = repository.save(pessoa);
 		contatoRepository.saveAll(pessoa.getContatos());
 
 		return new PessoaDTO(pessoa);

@@ -1,10 +1,14 @@
 package com.luanhroliveira.elotech.dto;
 
+import java.io.Serializable;
+
 import com.luanhroliveira.elotech.entities.Pessoa;
 import com.luanhroliveira.elotech.entities.PessoaContato;
 import com.luanhroliveira.elotech.entities.enums.Status;
 
-public class PessoaContatoDTO {
+public class PessoaContatoDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private Long id;
 	private Pessoa pessoa;
 	private String telefone;

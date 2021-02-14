@@ -31,6 +31,7 @@ public class PessoaDTO implements Serializable {
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		this.status = status;
+
 	}
 
 	public PessoaDTO(Pessoa entity) {
