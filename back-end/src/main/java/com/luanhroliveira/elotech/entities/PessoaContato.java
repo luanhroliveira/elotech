@@ -28,6 +28,10 @@ public class PessoaContato implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull
+	@Column(length = 64, nullable = false)
+	private String nome;
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "pessoa_id", nullable = false)
@@ -51,9 +55,10 @@ public class PessoaContato implements Serializable {
 
 	}
 
-	public PessoaContato(Long id, Pessoa pessoa, String telefone, String email, Status status) {
+	public PessoaContato(Long id, String nome, Pessoa pessoa, String telefone, String email, Status status) {
 		super();
 		this.id = id;
+		this.nome = nome;
 		this.pessoa = pessoa;
 		this.telefone = telefone;
 		this.email = email;
@@ -66,6 +71,14 @@ public class PessoaContato implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Pessoa getPessoa() {

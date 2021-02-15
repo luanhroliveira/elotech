@@ -64,7 +64,8 @@ public class PessoaService {
 			Pessoa pessoa = new Pessoa(null, dto.getNome(), dto.getCpf(), dto.getDataNascimento(), Status.ATIVO);
 
 			for (PessoaContatoDTO p : dto.getContatos()) {
-				PessoaContato contato = new PessoaContato(null, pessoa, p.getTelefone(), p.getEmail(), Status.ATIVO);
+				PessoaContato contato = new PessoaContato(null, p.getNome(), pessoa, p.getTelefone(), p.getEmail(),
+						Status.ATIVO);
 				pessoa.getContatos().add(contato);
 			}
 
@@ -130,6 +131,7 @@ public class PessoaService {
 
 		for (PessoaContatoDTO p : dto.getContatos()) {
 			PessoaContato contato = contatoRepository.getOne(p.getId());
+			contato.setNome(p.getNome());
 			contato.setEmail(p.getEmail());
 			contato.setTelefone(p.getTelefone());
 			contato = contatoRepository.save(contato);

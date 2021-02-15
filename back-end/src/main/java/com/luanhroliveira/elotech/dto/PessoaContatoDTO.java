@@ -8,26 +8,30 @@ import com.luanhroliveira.elotech.entities.enums.Status;
 
 public class PessoaContatoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
+	private String nome;
 	private Pessoa pessoa;
 	private String telefone;
 	private String email;
 	private Status status;
 
 	public PessoaContatoDTO() {
-		
+
 	}
 
-	public PessoaContatoDTO(Long id, String telefone, String email, Status status) {
+	public PessoaContatoDTO(Long id, String nome, Pessoa pessoa, String telefone, String email, Status status) {
 		this.id = id;
+		this.nome = nome;
+		this.pessoa = pessoa;
 		this.telefone = telefone;
 		this.email = email;
 		this.status = status;
 	}
-	
+
 	public PessoaContatoDTO(PessoaContato entity) {
 		id = entity.getId();
+		nome = entity.getNome();
 		telefone = entity.getTelefone();
 		email = entity.getEmail();
 		status = entity.getStatus();
@@ -39,6 +43,14 @@ public class PessoaContatoDTO implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Pessoa getPessoa() {
