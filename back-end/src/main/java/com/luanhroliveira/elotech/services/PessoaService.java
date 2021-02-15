@@ -112,7 +112,8 @@ public class PessoaService {
 			Pessoa pessoa = repository.getOne(id);
 			updateData(pessoa, dto);
 
-			repository.save(pessoa);
+			pessoa = repository.save(pessoa);
+
 			return new PessoaDTO(pessoa);
 
 		} catch (EntityNotFoundException e) {
@@ -126,6 +127,13 @@ public class PessoaService {
 		pessoa.setCpf(dto.getCpf());
 		pessoa.setDataNascimento(dto.getDataNascimento());
 		pessoa.setNome(dto.getNome());
-	}
 
+		for (PessoaContatoDTO p : dto.getContatos()) {
+			PessoaContato contato = contatoRepository.getOne(p.getId());
+			contato.setEmail(p.getEmail());
+			contato.setTelefone(p.getTelefone());
+			contato = contatoRepository.save(contato);
+			pessoa.getContatos().add(contato);
+		}
+	}
 }

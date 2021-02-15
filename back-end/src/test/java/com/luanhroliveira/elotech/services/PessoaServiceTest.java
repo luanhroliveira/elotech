@@ -14,20 +14,34 @@ import com.luanhroliveira.elotech.dto.PessoaDTO;
 public class PessoaServiceTest {
 
 	@Autowired
-	private PessoaService pessoaService;
-		
+	private PessoaService service;
+
 	@Test
 	public void findAllTest() {
-		pessoaService.findAll();
+		service.findAll();
 	}
-	
+
 	@Test
-	public void findById() {
-		PessoaDTO obj = pessoaService.findById(1L);
-		
+	public void findByIdTest() {
+		PessoaDTO obj = service.findById(1L);
+
 		assertEquals("09033536951", obj.getCpf());
 		assertEquals("LUAN HIGOR RIBEIRO DE OLIVEIRA", obj.getNome());
 		assertEquals("1998-11-04", String.valueOf(obj.getDataNascimento()));
 	}
-	
+
+	@Test
+	public void setStatusTest() {
+		service.setStatus(1L);
+	}
+
+	@Test
+	public void updateTest() {
+		service.update(1L, new PessoaDTO());
+	}
+
+	@Test
+	public void deleteTest() {
+		service.delete(1L);
+	}
 }
