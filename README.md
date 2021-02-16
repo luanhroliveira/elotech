@@ -2,14 +2,12 @@
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/luanhroliveira/elotech/blob/main/LICENSE) 
 
 # Sobre o projeto
-
 https://luanhroliveira-elotech.herokuapp.com
 
 Esse projeto consiste em uma API Rest de cadastro de pessoas e contatos.
 Uma pessoa tem no mínimo um contato, e um contato pertence a uma única pessoa.
- 
-## Requisitos:
 
+## Requisitos:
 - Possuir ao menos os endpoints: GET(Buscar uma única Pessoa), GET (Busca paginada opção de filtro para retornar várias pessoas), POST, PUT, DELETE. <font color="green">[CONCLUÍDO]</font>
 - O cadastro de pessoa deve ter os campos: Id, Nome, CPF, Data de nascimento. <font color="green"> [CONCLUÍDO]</font>
 - A pessoa deve possuir uma lista de contatos (relacionamento um para muitos) com os campos: Id, Nome, Telefone e Email. <font color="green">[CONCLUÍDO]</font>
