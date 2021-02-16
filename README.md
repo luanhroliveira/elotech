@@ -6,40 +6,110 @@
 https://luanhroliveira-elotech.herokuapp.com
 
 Esse projeto consiste em uma API Rest de cadastro de pessoas e contatos.
+Uma pessoa tem no mínimo um contato, e um contato pertence a uma única pessoa.
 
+## Requisitos:
+
+- Possuir ao menos os endpoints: GET(Buscar uma única Pessoa), GET (Busca paginada opção de filtro para retornar várias pessoas), POST, PUT, DELETE. [CONCLUÍDO]
+- O cadastro de pessoa deve ter os campos: Id, Nome, CPF, Data de nascimento. [CONCLUÍDO]
+- A pessoa deve possuir uma lista de contatos (relacionamento um para muitos) com os campos: Id, Nome, Telefone e Email. [CONCLUÍDO]
+- Os dados devem ser persistidos utilizando um banco de dados relacional. [CONCLUÍDO]
+
+## Validações:
+<font color="green"> Some green text </font>
+- Todos os campos são obrigatórios, tanto da pessoa como do contato. [CONCLUÍDO]
+- A Pessoa deve possuir ao menos um contato. [CONCLUÍDO]
+- O CPF deve ser um CPF válido. [CONCLUÍDO]
+- A Data de nascimento não pode ser uma data futura. [CONCLUÍDO]
+- Validar sintaxe do email do contato. [CONCLUÍDO]
+
+## Requisitos técnicos:
+
+- Deverão ser criados testes unitários. [CONCLUÍDO]
+- Publicar o código em repositório público. [CONCLUÍDO]
+
+## É opcional e será um diferencial:
+
+- Implementar o front-end para consumir a API.
+    (Desejável que seja em ReactJS ou Angular). [NÃO CONCLUÍDO]
+- Publicar a aplicação na internet utilizando algum provedor, para que possa ser acessado sem necessidade de rodar o projeto local. [CONCLUÍDO]
 
 ----------------------------------------------------------------------
-#Get
+### Get
 https://luanhroliveira-elotech.herokuapp.com/pessoas
 
-Retorna todos os registros de pessoas com seus respectivos contatos.
+Método para retornar todos os registros de pessoas com seus respectivos contatos.
 
 ----------------------------------------------------------------------
-#Get/id
+### Get
 https://luanhroliveira-elotech.herokuapp.com/pessoas/1
 
-Retorna um registro de pessoa específico, com todos os seus contatos.
+Método para retornar um registro de pessoa específico, com todos os seus contatos.
 
 ----------------------------------------------------------------------
-#Put
+### Put
 https://luanhroliveira-elotech.herokuapp.com/pessoas/1/status
 
-Altera o status da pessoa de inativo para ativo, e vice-versa.
+Método para alterar o status da pessoa de inativo para ativo, e vice-versa.
 
 ----------------------------------------------------------------------
-#Put
-https://luanhroliveira-elotech.herokuapp.com/pessoas/1/
+### Put
+https://luanhroliveira-elotech.herokuapp.com/pessoas/1
 
-Edita o campo alterado passado por parâmetro no arquivo Json.
+Métoo para editar o campo alterado passado por parâmetro no arquivo Json.
 
 ----------------------------------------------------------------------
-#Post
+### Post
 https://luanhroliveira-elotech.herokuapp.com/pessoas
 
 Método para fazer a inserção de pessoa e contatos.
 
 ----------------------------------------------------------------------
 
+### Delete
+https://luanhroliveira-elotech.herokuapp.com/pessoas/1
 
-#Modelo conceitual
+Método para deletar por id a pessoa e todos os seus contatos.
 
+----------------------------------------------------------------------
+
+
+## Modelo conceitual
+![Modelo Conceitual](https://github.com/luanhroliveira/assets/blob/main/modelo-conceitual.png "Modelo conceitual")
+
+
+## Padrão camadas adotado
+
+![Image](https://github.com/luanhroliveira/assets/blob/main/camadas.png "Padrão camadas")
+
+# Tecnologias utilizadas
+## Back end
+- Java
+- Spring Boot
+- JPA / Hibernate
+
+## Implantação em produção
+- Back end: Heroku
+- Banco de dados: Postgresql
+
+# Como executar o projeto
+
+## Back end
+Pré-requisitos: Java 11
+
+```bash
+# clonar repositório
+git clone https://github.com/luanhroliveira/elotech.git
+
+# entrar na pasta do projeto back end
+cd backend
+
+# executar o projeto
+./mvnw spring-boot:run
+```
+
+# Autor
+
+Luan Higor Ribeiro de Oliveira
+
+https://www.linkedin.com/in/luanhroliveira
