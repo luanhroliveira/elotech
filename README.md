@@ -7,32 +7,32 @@ https://luanhroliveira-elotech.herokuapp.com
 
 Esse projeto consiste em uma API Rest de cadastro de pessoas e contatos.
 Uma pessoa tem no mínimo um contato, e um contato pertence a uma única pessoa.
-
+ 
 ## Requisitos:
 
-- Possuir ao menos os endpoints: GET(Buscar uma única Pessoa), GET (Busca paginada opção de filtro para retornar várias pessoas), POST, PUT, DELETE. [CONCLUÍDO]
-- O cadastro de pessoa deve ter os campos: Id, Nome, CPF, Data de nascimento. [CONCLUÍDO]
-- A pessoa deve possuir uma lista de contatos (relacionamento um para muitos) com os campos: Id, Nome, Telefone e Email. [CONCLUÍDO]
-- Os dados devem ser persistidos utilizando um banco de dados relacional. [CONCLUÍDO]
+- Possuir ao menos os endpoints: GET(Buscar uma única Pessoa), GET (Busca paginada opção de filtro para retornar várias pessoas), POST, PUT, DELETE. <font color="green">[CONCLUÍDO]</font>
+- O cadastro de pessoa deve ter os campos: Id, Nome, CPF, Data de nascimento. <font color="green"> [CONCLUÍDO]</font>
+- A pessoa deve possuir uma lista de contatos (relacionamento um para muitos) com os campos: Id, Nome, Telefone e Email. <font color="green">[CONCLUÍDO]</font>
+- Os dados devem ser persistidos utilizando um banco de dados relacional. <font color="green">[CONCLUÍDO]</font>
 
 ## Validações:
 <font color="green"> Some green text </font>
-- Todos os campos são obrigatórios, tanto da pessoa como do contato. [CONCLUÍDO]
-- A Pessoa deve possuir ao menos um contato. [CONCLUÍDO]
-- O CPF deve ser um CPF válido. [CONCLUÍDO]
-- A Data de nascimento não pode ser uma data futura. [CONCLUÍDO]
-- Validar sintaxe do email do contato. [CONCLUÍDO]
+- Todos os campos são obrigatórios, tanto da pessoa como do contato. <font color="green">[CONCLUÍDO]</font>
+- A Pessoa deve possuir ao menos um contato. <font color="green">[CONCLUÍDO]</font>
+- O CPF deve ser um CPF válido. <font color="green">[CONCLUÍDO]</font>
+- A Data de nascimento não pode ser uma data futura. <font color="green">[CONCLUÍDO]</font>
+- Validar sintaxe do email do contato. <font color="green">[CONCLUÍDO]</font>
 
 ## Requisitos técnicos:
 
-- Deverão ser criados testes unitários. [CONCLUÍDO]
-- Publicar o código em repositório público. [CONCLUÍDO]
+- Deverão ser criados testes unitários. <font color="green">[CONCLUÍDO]</font>
+- Publicar o código em repositório público. <font color="green">[CONCLUÍDO]</font>
 
 ## É opcional e será um diferencial:
 
 - Implementar o front-end para consumir a API.
-    (Desejável que seja em ReactJS ou Angular). [NÃO CONCLUÍDO]
-- Publicar a aplicação na internet utilizando algum provedor, para que possa ser acessado sem necessidade de rodar o projeto local. [CONCLUÍDO]
+    (Desejável que seja em ReactJS ou Angular). <font color="red">[NÃO CONCLUÍDO]</font>
+- Publicar a aplicação na internet utilizando algum provedor, para que possa ser acessado sem necessidade de rodar o projeto local. <font color="green">[CONCLUÍDO]</font>
 
 ----------------------------------------------------------------------
 ### Get
@@ -110,6 +110,6 @@ cd backend
 
 # Autor
 
-Luan Higor Ribeiro de Oliveira
+Luan Higor Ribeiro de Oliveira.
 
 https://www.linkedin.com/in/luanhroliveira
