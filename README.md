@@ -14,7 +14,6 @@ Uma pessoa tem no mínimo um contato, e um contato pertence a uma única pessoa.
 - Os dados devem ser persistidos utilizando um banco de dados relacional. <font color="green">[CONCLUÍDO]</font>
 
 ## Validações:
-<font color="green"> Some green text </font>
 - Todos os campos são obrigatórios, tanto da pessoa como do contato. <font color="green">[CONCLUÍDO]</font>
 - A Pessoa deve possuir ao menos um contato. <font color="green">[CONCLUÍDO]</font>
 - O CPF deve ser um CPF válido. <font color="green">[CONCLUÍDO]</font>
