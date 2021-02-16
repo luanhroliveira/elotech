@@ -95,6 +95,7 @@ Método para deletar por id a pessoa e todos os seus contatos.
 ## Back end
 Pré-requisitos: Java 11
 
+**ATENÇÃO: O PROJETO NÃO RODA LOCALMENTE NO PROFILE PROD! Se você quiser rodar o projeto localmente depois, mude para o profile test.**
 ```bash
 # clonar repositório
 git clone https://github.com/luanhroliveira/elotech.git
